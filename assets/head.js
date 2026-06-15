@@ -195,10 +195,21 @@ if (honeypotTwo) honeypotTwo.setAttribute('autocomplete', 'off');
         submit.disabled = true;
         return false;
       }
-      
-      
-      
+
+      // Check 3: E-Mail-Format mit TLD-Pflicht
+      const emailInput = form.querySelector('input[type="email"]');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (emailInput && !emailRegex.test(emailInput.value.trim())) {
+        alert("Bitte geben Sie eine gültige E-Mail-Adresse ein (z.B. name@beispiel.de).");
+        emailInput.focus();
+        return false;
+      }
+
       // Alle Checks bestanden!
+      
+      
+      
+
 formCanSubmit = true;
 form.submit();
 // Nach Submission zurücksetzen, damit Honeypot weiter aktiv bleibt

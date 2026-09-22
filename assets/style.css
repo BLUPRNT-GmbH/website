@@ -519,3 +519,130 @@
       padding: var(--_space---space-40) var(--_space---space-30) var(--_space---space-50);
     }
   }
+
+  /* ---- Rich Text: Links, Bilder, Zitat-Box, Prompt-Block ----
+     Uebernommen aus dem Embed der Newsletter-Ausgaben, damit es auf
+     allen Seiten gleich aussieht. */
+  .text-rich a {
+    color: var(--human-blue);
+    text-decoration: underline;
+    text-decoration-color: rgba(6, 6, 239, .35);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: text-decoration-color .15s;
+  }
+  .text-rich a:hover {
+    text-decoration-color: var(--human-blue);
+  }
+  .text-rich img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  .text-rich li > p:last-child {
+    margin-bottom: 0;
+  }
+  .text-rich blockquote {
+    position: relative;
+    color: var(--almost-black);
+    font-size: var(--_text---text-18);
+    line-height: var(--_text---line-height-150);
+  }
+  .text-rich blockquote::before,
+  .text-rich blockquote::after {
+    position: absolute;
+    font-family: var(--_text---serifen), Georgia, serif;
+    font-size: var(--_text---text-56);
+    line-height: 1;
+    color: var(--dark-gray);
+  }
+  .text-rich blockquote::before {
+    content: "\201C";
+    top: var(--_space---space-20);
+    left: var(--_space---space-50);
+  }
+  .text-rich blockquote::after {
+    content: "\201D";
+    bottom: var(--_space---space-20);
+    right: var(--_space---space-50);
+  }
+  .text-rich blockquote h2,
+  .text-rich blockquote h3 {
+    margin-top: 0;
+  }
+  .text-rich blockquote h2 {
+    font-size: var(--_text---text-40);
+  }
+  .text-rich blockquote p:last-child {
+    margin-bottom: 0;
+  }
+  .text-rich pre {
+    position: relative;
+    background: var(--bg-light);
+    border-radius: var(--_radius---radius-20);
+    padding: var(--_space---space-50) var(--_space---space-30) var(--_space---space-30);
+    overflow-x: auto;
+    margin: var(--_space---space-40) 0;
+  }
+  .text-rich pre code {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: var(--_text---text-14);
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--almost-black);
+  }
+  .text-rich pre::before {
+    content: "PROMPT";
+    position: absolute;
+    top: var(--_space---space-20);
+    left: var(--_space---space-30);
+    font-family: var(--_text---serifenlos), Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    color: var(--human-blue);
+  }
+  .nl-copy {
+    position: absolute;
+    top: var(--_space---space-15);
+    right: var(--_space---space-15);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--_text---serifenlos), Arial, sans-serif;
+    font-size: var(--_text---text-14);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--human-blue);
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--_radius---radius-100);
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: box-shadow .15s, border-color .15s;
+  }
+  .nl-copy:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    border-color: var(--human-blue);
+  }
+  .nl-copy.ist-kopiert {
+    color: #3d4a12;
+    border-color: var(--green);
+    background: var(--green);
+  }
+  @media (max-width: 767px) {
+    .text-rich blockquote h2 {
+      font-size: var(--_text---text-28);
+    }
+    .text-rich blockquote::before {
+      top: var(--_space---space-15);
+      left: var(--_space---space-30);
+      font-size: var(--_text---text-40);
+    }
+    .text-rich blockquote::after {
+      bottom: var(--_space---space-15);
+      right: var(--_space---space-30);
+      font-size: var(--_text---text-40);
+    }
+  }

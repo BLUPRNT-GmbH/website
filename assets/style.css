@@ -432,3 +432,90 @@
     text-underline-offset: 8px;
     text-decoration-color: var(--almost-black);
   }
+
+  /* =========================================================
+     16) RICH TEXT – Klasse text-rich, Artikel-Combo text-rich--artikel
+     Groessen, Schriften und Rand unten kommen von den Tag-Styles
+     im Designer. Hier stehen nur Raender oben, die kleinere
+     Artikel-Skala und Kind-Regeln, die der Designer nicht kennt.
+     Werte: docs/text-rich.md im Repo KI-Newsletter-Archiv.
+  ========================================================= */
+  .text-rich h2,
+  .text-rich h3 {
+    margin-top: var(--_space---space-40);
+  }
+  .text-rich h4,
+  .text-rich h5,
+  .text-rich h6 {
+    margin-top: var(--_space---space-20);
+  }
+  .text-rich ol {
+    margin-top: 0;
+    margin-bottom: var(--_space---space-10);
+    padding-left: 1.3em;
+  }
+  .text-rich li {
+    margin-bottom: var(--_space---space-5);
+  }
+  .text-rich figure {
+    margin-top: var(--_space---space-40);
+    margin-bottom: var(--_space---space-40);
+  }
+  .text-rich blockquote {
+    margin-top: var(--_space---space-60);
+    margin-bottom: var(--_space---space-60);
+    padding: var(--_space---space-50) var(--_space---space-50) var(--_space---space-60);
+    background: var(--bg-light);
+    border: 0;
+    border-radius: var(--_radius---radius-20);
+  }
+  /* Das erste Element hat keinen Rand oben, sonst haengt Luft ueber
+     jedem Textblock, der mit einer Ueberschrift beginnt. */
+  .text-rich > :first-child {
+    margin-top: 0;
+  }
+
+  /* Artikel (Ausgabe, Erfolgsgeschichte, Stellenanzeige):
+     schmale Spalte, gleiche Ebenen, Skala eine Stufe kleiner. */
+  .text-rich--artikel h1 {
+    font-size: var(--_text---text-48);
+  }
+  .text-rich--artikel h2 {
+    font-size: var(--_text---text-32);
+    margin-top: var(--_space---space-60);
+    margin-bottom: var(--_space---space-20);
+  }
+  .text-rich--artikel h3 {
+    margin-top: var(--_space---space-40);
+  }
+  .text-rich--artikel h4 {
+    font-size: var(--_text---text-18);
+  }
+  .text-rich--artikel p,
+  .text-rich--artikel ul,
+  .text-rich--artikel ol {
+    margin-bottom: var(--_space---space-20);
+  }
+  /* Ein Absatz, der eine Liste einleitet, gehoert eng an sie heran. */
+  .text-rich--artikel p:has(+ ul),
+  .text-rich--artikel p:has(+ ol) {
+    margin-bottom: var(--_space---space-10);
+  }
+  @media (max-width: 767px) {
+    .text-rich--artikel h1 {
+      font-size: 36px;
+    }
+    .text-rich--artikel h2 {
+      font-size: var(--_text---text-28);
+      margin-top: var(--_space---space-50);
+    }
+    .text-rich figure {
+      margin-top: var(--_space---space-30);
+      margin-bottom: var(--_space---space-30);
+    }
+    .text-rich blockquote {
+      margin-top: var(--_space---space-40);
+      margin-bottom: var(--_space---space-40);
+      padding: var(--_space---space-40) var(--_space---space-30) var(--_space---space-50);
+    }
+  }

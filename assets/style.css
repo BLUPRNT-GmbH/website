@@ -449,6 +449,11 @@
   .text-rich h3 {
     margin-top: var(--_space---space-40);
   }
+  /* Karten: der Abstand zum Button kommt von card--button-wrap (20),
+     das letzte Kind im Rich Text traegt deshalb keinen Rand unten. */
+  .card_text .text-rich > :last-child {
+    margin-bottom: 0;
+  }
   .text-rich h4,
   .text-rich h5,
   .text-rich h6 {

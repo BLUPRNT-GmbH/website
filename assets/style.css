@@ -440,6 +440,11 @@
      Artikel-Skala und Kind-Regeln, die der Designer nicht kennt.
      Werte: docs/text-rich.md im Repo KI-Newsletter-Archiv.
   ========================================================= */
+  /* Label ueber einem Textblock (Component headline): 20 statt der 10 der
+     Klasse Label. Beschluss 23. September 2026, Karten bleiben bei 10. */
+  .headline .label {
+    margin-bottom: var(--_space---space-20);
+  }
   .text-rich h2,
   .text-rich h3 {
     margin-top: var(--_space---space-40);

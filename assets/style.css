@@ -454,6 +454,11 @@
   .card_text .text-rich > :last-child {
     margin-bottom: 0;
   }
+  /* Karten setzen ihre Textfarbe an der Karte (Akzent: weiss). Ueberschriften
+     im Rich Text erben sie, statt die Tag-Farbe zu behalten. */
+  .card .text-rich :where(h1, h2, h3, h4, h5, h6) {
+    color: inherit;
+  }
   .text-rich h4,
   .text-rich h5,
   .text-rich h6 {

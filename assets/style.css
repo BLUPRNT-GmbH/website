@@ -666,3 +666,28 @@
       font-size: var(--_text---text-40);
     }
   }
+
+  /* =========================================================
+     18) BILD MIT TEXT – Schalter (29. September 2026)
+     Die Component traegt zwei unsichtbare Markierungen, die nur erscheinen,
+     solange der jeweilige Schalter an ist:
+     data-schalter="bild-handy"   Schalter „Bild auf dem Handy zeigen“
+     data-schalter="gleich-breit" Schalter „Bild und Text gleich breit“
+     Die Spalten tragen data-bereich="bild" und data-bereich="text".
+  ========================================================= */
+  [data-schalter] {
+    display: none;
+  }
+  @media (max-width: 767px) {
+    :has(> [data-bereich="bild"]):not(:has(> [data-schalter="bild-handy"])) > [data-bereich="bild"] {
+      display: none;
+    }
+  }
+  @media (min-width: 992px) {
+    :has(> [data-bereich="bild"]):not(:has(> [data-schalter="gleich-breit"])) > [data-bereich="bild"] {
+      flex-basis: 40%;
+    }
+    :has(> [data-bereich="bild"]):not(:has(> [data-schalter="gleich-breit"])) > [data-bereich="text"] {
+      flex-basis: 60%;
+    }
+  }

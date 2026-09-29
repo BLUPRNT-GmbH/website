@@ -697,11 +697,11 @@
      Die Slots von „Sektion“ und „Sektion zweispaltig“ tragen
      data-bereich="sektion-slot" und bringen den Seitenrand selbst mit.
      Bausteine, die ihrerseits einen Container sind (Bild mit Text,
-     Kontakt, Kennzahlen …), verlieren darin ihren eigenen Seitenrand,
-     sonst waere er doppelt.
+     Kontakt, Kennzahlen, Zitate, Logoleiste …), verlieren darin ihren
+     Seitenrand, auch verschachtelte Container. Sonst waere er doppelt.
   ========================================================= */
-  [data-bereich="sektion-slot"] > .container__horizontal--standard,
-  [data-bereich="sektion-slot"] > .container__vertical--standard {
+  [data-bereich="sektion-slot"] .container__horizontal--standard,
+  [data-bereich="sektion-slot"] .container__vertical--standard {
     padding-left: 0;
     padding-right: 0;
   }

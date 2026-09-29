@@ -470,6 +470,12 @@
       font-size: var(--_text---text-18);
     }
   }
+  /* Darstellung „Image stroke“ behaelt auf dem Handy 20 wie live. */
+  @media (max-width: 479px) {
+    .w-variant-4cfd3619-332e-13ca-5ba2-2684f5911a10 .text-rich :where(h3, h4) {
+      font-size: var(--_text---text-20);
+    }
+  }
   /* h4 ausserhalb von Karten wie auf bluprnt.de: Tablet 32, Handy 24. */
   @media (max-width: 991px) {
     h4 {

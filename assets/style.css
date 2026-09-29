@@ -459,6 +459,50 @@
   .card .text-rich :where(h1, h2, h3, h4, h5, h6) {
     color: inherit;
   }
+  /* Angleichung an bluprnt.de, 29. September 2026: Kartentitel im Rich Text
+     so gross wie die Klasse title (20, ab 767 px 18, Zeilenhoehe 150 %). */
+  .card .text-rich :where(h3, h4) {
+    font-size: var(--_text---text-20);
+    line-height: var(--_text---line-height-150);
+  }
+  @media (max-width: 767px) {
+    .card .text-rich :where(h3, h4) {
+      font-size: var(--_text---text-18);
+    }
+  }
+  /* h4 ausserhalb von Karten wie auf bluprnt.de: Tablet 32, Handy 24. */
+  @media (max-width: 991px) {
+    h4 {
+      font-size: var(--_text---text-32);
+    }
+  }
+  @media (max-width: 767px) {
+    h4 {
+      font-size: var(--_text---text-24);
+    }
+  }
+  /* Newsletter-Ausgabe: Fliesstext bleibt auch auf dem Handy bei 18. */
+  .nl-detail .text-rich--artikel {
+    font-size: var(--_text---text-18);
+  }
+  /* Erfolgsgeschichten (Collection 69159600…): Titel ist eine H1, sieht aber aus
+     wie die H2 auf bluprnt.de; Zwischenueberschriften in voller H2-Groesse. */
+  html[data-wf-collection="69159600704bc9ddcf9ca530"] .headline h1,
+  html[data-wf-collection="69159600704bc9ddcf9ca530"] .text-rich--artikel h2 {
+    font-size: var(--_text---text-48);
+  }
+  @media (max-width: 991px) {
+    html[data-wf-collection="69159600704bc9ddcf9ca530"] .headline h1,
+    html[data-wf-collection="69159600704bc9ddcf9ca530"] .text-rich--artikel h2 {
+      font-size: var(--_text---text-40);
+    }
+  }
+  @media (max-width: 767px) {
+    html[data-wf-collection="69159600704bc9ddcf9ca530"] .headline h1,
+    html[data-wf-collection="69159600704bc9ddcf9ca530"] .text-rich--artikel h2 {
+      font-size: var(--_text---text-32);
+    }
+  }
   .text-rich h4,
   .text-rich h5,
   .text-rich h6 {
@@ -538,7 +582,8 @@
   /* ---- Rich Text: Links, Bilder, Zitat-Box, Prompt-Block ----
      Uebernommen aus dem Embed der Newsletter-Ausgaben, damit es auf
      allen Seiten gleich aussieht. */
-  .text-rich a {
+  /* Links mit der Klasse link (Karriere-Anzeigen) behalten ihr Dunkel wie auf bluprnt.de. */
+  .text-rich a:not(.link) {
     color: var(--human-blue);
     text-decoration: underline;
     text-decoration-color: rgba(6, 6, 239, .35);
@@ -546,7 +591,7 @@
     text-underline-offset: 4px;
     transition: text-decoration-color .15s;
   }
-  .text-rich a:hover {
+  .text-rich a:not(.link):hover {
     text-decoration-color: var(--human-blue);
   }
   .text-rich img {

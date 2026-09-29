@@ -700,8 +700,31 @@
      Kontakt, Kennzahlen …), verlieren darin ihren eigenen Seitenrand,
      sonst waere er doppelt.
   ========================================================= */
-  [data-bereich="sektion-slot"] > .container__horizontal--standard,
-  [data-bereich="sektion-slot"] > .container__vertical--standard {
+  [data-bereich="sektion-slot"]:not(:is(.w-variant-8a471331-2aad-3434-bc3a-a37fd3cee8a1, .w-variant-51c21278-a49a-8266-27f0-4e2ca8d8e7c9)) > .container__horizontal--standard,
+  [data-bereich="sektion-slot"]:not(:is(.w-variant-8a471331-2aad-3434-bc3a-a37fd3cee8a1, .w-variant-51c21278-a49a-8266-27f0-4e2ca8d8e7c9)) > .container__vertical--standard {
     padding-left: 0;
     padding-right: 0;
+  }
+  /* Darstellung „Volle Breite“ und „Volle Breite hell“: Der Slot hat keinen Rand,
+     damit Tab-Karten, Zitate und Logoleiste bis an den Seitenrand scrollen. Bausteine
+     ohne eigenen Container behalten dort den Seitenrand einer normalen Sektion. */
+  [data-bereich="sektion-slot"]:is(.w-variant-8a471331-2aad-3434-bc3a-a37fd3cee8a1, .w-variant-51c21278-a49a-8266-27f0-4e2ca8d8e7c9) > :is(.headline, .textblock, .textblock__content, .button__group) {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--_space---space-30);
+    padding-right: var(--_space---space-30);
+  }
+  @media (max-width: 767px) {
+    [data-bereich="sektion-slot"]:is(.w-variant-8a471331-2aad-3434-bc3a-a37fd3cee8a1, .w-variant-51c21278-a49a-8266-27f0-4e2ca8d8e7c9) > :is(.headline, .textblock, .textblock__content, .button__group) {
+      padding-left: var(--_space---space-20);
+      padding-right: var(--_space---space-20);
+    }
+  }
+  @media (max-width: 479px) {
+    [data-bereich="sektion-slot"]:is(.w-variant-8a471331-2aad-3434-bc3a-a37fd3cee8a1, .w-variant-51c21278-a49a-8266-27f0-4e2ca8d8e7c9) > :is(.headline, .textblock, .textblock__content, .button__group) {
+      padding-left: var(--_space---space-10);
+      padding-right: var(--_space---space-10);
+    }
   }

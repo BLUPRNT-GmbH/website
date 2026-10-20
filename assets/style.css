@@ -728,3 +728,26 @@
       padding-right: var(--_space---space-10);
     }
   }
+
+  /* =========================================================
+     20) 404-SEITE (20. Oktober 2026)
+     Ueberschrift steht seit dem Umbau ausserhalb des Textblocks.
+     Abstand Ueberschrift bis Text wieder 10 px (Abstand der h1,
+     ohne den Abstand des Containers). Auf dem Handy stehen 404,
+     Ueberschrift und Knoepfe links, buendig mit dem Text.
+     Greift nur am neuen Aufbau (.headline direkt vor .textblock).
+  ========================================================= */
+  [data-wf-page="691f9e246ba1f49e68d87333"] main .container__vertical--standard:has(> .headline + .textblock) {
+    row-gap: 0;
+  }
+  @media (max-width: 479px) {
+    [data-wf-page="691f9e246ba1f49e68d87333"] main .container__vertical--standard:has(> .headline + .textblock) > .headline {
+      align-items: flex-start;
+    }
+    [data-wf-page="691f9e246ba1f49e68d87333"] main .container__vertical--standard:has(> .headline + .textblock) > .headline > :is(.label, h1) {
+      text-align: left;
+    }
+    [data-wf-page="691f9e246ba1f49e68d87333"] main .container__vertical--standard:has(> .headline + .textblock) .button__group {
+      align-items: flex-start;
+    }
+  }

@@ -218,6 +218,44 @@ setTimeout(() => { formCanSubmit = false; attemptCount = 0; }, 2000);
       return false;
     });
   });
+
+  /* =========================================================
+     7b) BILD-BAUSTEIN: sizes korrigieren
+     Webflow schreibt an jedes Bild des Bausteins „Bild“ sizes="100px"
+     (gemessen 02.11.2026, Aufgabe bluprnt-de-bilder-verpixelt-sizes-100px),
+     der Browser lädt dann die 500er-Fassung. Der Beobachter setzt den Wert
+     beim Einlesen jedes Bildes um, bevor das lazy geladene Bild geholt wird.
+     "auto" nimmt die Layoutbreite (Chrome/Edge ab 126, Firefox ab 150,
+     Safari ab 27); ältere Browser nehmen die Angabe dahinter.
+  ========================================================= */
+
+  (function () {
+    var ALT = '100px';
+    var NEU = 'auto, (max-width: 767px) 100vw, 50vw';
+
+    function fix(img) {
+      if (img.getAttribute('sizes') === ALT) img.setAttribute('sizes', NEU);
+    }
+
+    function scan(node) {
+      if (!node || node.nodeType !== 1) return;
+      if (node.tagName === 'IMG') { fix(node); return; }
+      if (node.querySelectorAll) {
+        node.querySelectorAll('img[sizes="' + ALT + '"]').forEach(fix);
+      }
+    }
+
+    var beobachter = new MutationObserver(function (liste) {
+      for (var i = 0; i < liste.length; i++) {
+        var neu = liste[i].addedNodes;
+        for (var j = 0; j < neu.length; j++) scan(neu[j]);
+      }
+    });
+    beobachter.observe(document.documentElement, { childList: true, subtree: true });
+
+    document.addEventListener('DOMContentLoaded', function () { scan(document.body); });
+  })();
+
   /* =========================================================
      7) CUSTOM PROPS – Dynamic SVG + Image Settings
   ========================================================= */

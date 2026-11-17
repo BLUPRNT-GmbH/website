@@ -752,6 +752,6 @@
     }
   }
 
-/* Footer auf kurzen Seiten am unteren Fensterrand (17.11.2026, Lynns Wahl A) */
+/* ABGENOMMEN 2026-11-17 Footer am Fensterrand: Footer auf kurzen Seiten am unteren Fensterrand (Lynns Wahl A, „passt“) */
 body { display: flex; flex-direction: column; min-height: 100svh; }
 body > main { flex: 1 0 auto; }

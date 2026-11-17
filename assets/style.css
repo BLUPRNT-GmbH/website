@@ -751,3 +751,7 @@
       align-items: flex-start;
     }
   }
+
+/* Footer auf kurzen Seiten am unteren Fensterrand (17.11.2026, Lynns Wahl A) */
+body { display: flex; flex-direction: column; min-height: 100svh; }
+body > main { flex: 1 0 auto; }

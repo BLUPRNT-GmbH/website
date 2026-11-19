@@ -752,6 +752,40 @@
     }
   }
 
+  /* =========================================================
+     21) WEEKLY-KARTEN STARTSEITE (19. November 2026, Issue #100
+     im Repo Webflow-bluprnt.de)
+     Sektion „Frisch aus dem Weekly“: zwei Karten, die aeltere links
+     (footer.js dreht die Liste im DOM um), Ueberschriften buendig.
+     Karte ohne Serie zeigt „Einzelausgabe“ in Blau auf Hoehe des
+     Seriennamens. Haken sind data-Attribute an den Listen, keine
+     Klassen. .w-dyn-items ist eine Systemklasse von Webflow; sie
+     hebt den Selektor ueber .grid.grid--3 (Spezifitaet 0,2,0).
+  ========================================================= */
+  /* ABGENOMMEN 2026-11-19 Weekly-Karten Startseite: Einzelausgabe, Hoehe der Kopfzeile, zwei Spalten mit buendigen Zeilen (Lynn „passt“ auf die Vorschau) */
+  [data-feld="einzelausgabe"] { display: none; }
+  [data-bereich^="weekly-start"] .nl-serie:has([data-feld="serie"]:empty) [data-feld="einzelausgabe"] { display: block; }
+  /* Ohne Teil-Zeile Platz in ihrer Hoehe lassen: text-14 mal 140 % plus 5 px Abstand (.nl-serie). */
+  [data-bereich^="weekly-start"] .nl-serie:not(:has([data-feld="teil"])) {
+    padding-top: calc(var(--_text---text-14) * 1.4 + 5px);
+  }
+  @media (min-width: 992px) {
+    .w-dyn-items[data-bereich="weekly-start-raster"] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: none;
+      grid-auto-rows: auto;
+    }
+    /* Kopfzeile, Ueberschrift und Text teilen sich die Zeilen der Reihe.
+       row-gap 0, sonst erbt das Subgrid die 20 px des Rasters. */
+    .w-dyn-items[data-bereich="weekly-start-raster"] > .w-dyn-item,
+    .w-dyn-items[data-bereich="weekly-start-raster"] > .w-dyn-item > .nl-card {
+      display: grid;
+      grid-row: span 3;
+      grid-template-rows: subgrid;
+      row-gap: 0;
+    }
+  }
+
 /* ABGENOMMEN 2026-11-17 Footer am Fensterrand: Footer auf kurzen Seiten am unteren Fensterrand (Lynns Wahl A, „passt“) */
 body { display: flex; flex-direction: column; min-height: 100svh; }
 body > main { flex: 1 0 auto; }

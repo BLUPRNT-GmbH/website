@@ -8,6 +8,7 @@
      4) Tabs (<=991px): Tab/Bildwechsel per Horizontal-Scroll (>=60% sichtbar)
      5) Tabs (<=991px): Bilder vorladen + Höhe fixieren (gegen „Hüpfen“)
      6) Lottie: Init + Toggle + Resize + BFCache (ohne Console-Ausgaben)
+     7) Weekly-Karten Startseite: aeltere Ausgabe zuerst
   ========================================================= */
 
   /* =========================================================
@@ -711,5 +712,26 @@
       });
 
       boot();
+    });
+  })();
+
+  /* =========================================================
+     7) WEEKLY-KARTEN STARTSEITE (19. November 2026, Issue #100
+     im Repo Webflow-bluprnt.de)
+     Webflow liefert die zwei neuesten Ausgaben absteigend. Hier wird
+     die Liste im DOM umgedreht, damit Bild, Tastatur und Screenreader
+     dieselbe Reihenfolge haben (WCAG 1.3.2, C27). Laeuft sofort: Dieses
+     Skript steht am Ende des Body, die Listen gibt es schon, und die
+     Sektion liegt beim Laden unter dem Falz. Ohne Skript bleibt die
+     neueste vorn.
+  ========================================================= */
+  // ABGENOMMEN 2026-11-19 Weekly-Karten Startseite: aeltere Ausgabe links (Lynn „passt“ auf die Vorschau)
+  (function () {
+    document.querySelectorAll('[data-bereich^="weekly-start"]').forEach(function (liste) {
+      if (liste.dataset.umgedreht) return;
+      var kinder = Array.prototype.slice.call(liste.children);
+      if (kinder.length < 2) return;
+      kinder.reverse().forEach(function (kind) { liste.appendChild(kind); });
+      liste.dataset.umgedreht = '1';
     });
   })();
